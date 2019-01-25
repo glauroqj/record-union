@@ -1,0 +1,30 @@
+{
+  "presets": [
+    ["next/babel", {
+      "preset-env": {},
+      "transform-runtime": {},
+      "styled-jsx": {},
+      "class-properties": {}
+    }]
+  ],
+  "plugins": [
+    ["styled-jsx/babel", { "optimizeForSpeed": true }],
+    [
+      "module-resolver", {
+        "root": ["."],
+        "alias": {
+          "styles": "./src/styles",
+          "ui": "./src/ui",
+          "pages": "./src/pages",
+          "build": "./src/build"
+        },
+        "cwd": "babelrc"
+    }],
+    [
+      "inline-import",
+      {
+        "extensions": [".css"]
+      }
+    ]
+  ]
+}
