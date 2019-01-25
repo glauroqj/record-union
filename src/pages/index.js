@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import {Loader} from '../ui/Loader/index'
 
 /** actions */
-import { addNote, deleteNote } from '../store/actions/noteActions'
+import { addNote, deleteNote, listNotes } from '../store/actions/noteActions'
 
 // import fetch from 'isomorphic-unfetch'
 /* pages */
@@ -18,18 +18,17 @@ import { addNote, deleteNote } from '../store/actions/noteActions'
 
 class Home extends Component {
   static getInitialProps = async ({ reduxStore, req }) => {
-    console.log('GET INITIAL PROPS HOME', reduxStore)
-    const note = {
-      text: 'Testando a vida',
-      loading: false
-    }
-    reduxStore.dispatch(addNote(note))
+    console.log('GET INITIAL PROPS HOME')
     // const json = await fetch('https://api.github.com/users/glauroqj')
     // const user = await json.json()
     // console.log('USER', user)
     // return {
     //   user
     // }
+  }
+
+  componentDidMount() {
+    this.props.dispatch(listNotes())
   }
 
   chooseTemplate = () => {

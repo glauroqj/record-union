@@ -1,9 +1,12 @@
+/** local storage */
+import { loadList, saveNote, deleteNote } from './localStorage'
+
 const notes = (state, action) => {
+  /** initial state */
   state = {
-    loading: true,
     list: []
   }
-  console.log('Reducer: ', action)
+
   switch (action.type) {
     case 'ADD_NOTE':
       return {
@@ -19,9 +22,10 @@ const notes = (state, action) => {
         authenticaded: true
       }
     case 'LIST_NOTES':
+      const listUpdated = loadList()
       return {
         ...state,
-        list: action.list
+        list: listUpdated
       }
     default:
       return state

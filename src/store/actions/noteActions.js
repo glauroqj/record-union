@@ -8,9 +8,8 @@ const deleteNote = id => ({
   id
 })
 
-const listNotes = list => ({
-  type: 'LIST_NOTES',
-  list
+const listNotes = () => ({
+  type: 'LIST_NOTES'
 })
 
 export {
