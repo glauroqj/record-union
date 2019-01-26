@@ -1,5 +1,14 @@
-/** local storage */
-import { loadList, saveNote, deleteNote } from './localStorage'
+import {
+  FETCH_LIST_STARTED,
+  FETCH_LIST_DONE,
+  FETCH_LIST_ERROR,
+  LIST_UPDATE_STARTED,
+  LIST_UPDATE_DONE,
+  LIST_UPDATE_ERROR,
+  ADD_NOTE_STARTED,
+  ADD_NOTE_DONE,
+  ADD_NOTE_ERROR
+} from '../actions/noteActionsType'
 
 const notes = (state, action) => {
   /** initial state */
@@ -8,11 +17,11 @@ const notes = (state, action) => {
   }
 
   switch (action.type) {
-    case 'ADD_NOTE':
+    case [FETCH_LIST_DONE]:
       return {
         ...state,
-        list: [...state.list, action.note.text],
-        loading: action.note.loading
+        list: action.list,
+        loading: action.loading
       }
     case 'DELETE_NOTE':
       return {
@@ -22,10 +31,9 @@ const notes = (state, action) => {
         authenticaded: true
       }
     case 'LIST_NOTES':
-      const listUpdated = loadList()
       return {
         ...state,
-        list: listUpdated
+        list: []
       }
     default:
       return state

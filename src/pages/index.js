@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import {Loader} from '../ui/Loader/index'
 
 /** actions */
-import { addNote, deleteNote, listNotes } from '../store/actions/noteActions'
+import { fetchInitialList } from '../store/actions/noteActions'
 
 // import fetch from 'isomorphic-unfetch'
 /* pages */
@@ -19,6 +19,8 @@ import { addNote, deleteNote, listNotes } from '../store/actions/noteActions'
 class Home extends Component {
   static getInitialProps = async ({ reduxStore, req }) => {
     console.log('GET INITIAL PROPS HOME')
+    // const { fetchInitialList } = this.props
+    // fetchInitialList()
     // const json = await fetch('https://api.github.com/users/glauroqj')
     // const user = await json.json()
     // console.log('USER', user)
@@ -28,7 +30,8 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(listNotes())
+    const { fetchInitialList } = this.props
+    fetchInitialList()
   }
 
   chooseTemplate = () => {
@@ -37,7 +40,7 @@ class Home extends Component {
     if (loading) {
       return <Loader />
     }
-    return <div>{list}</div>
+    return <div>LISTA</div>
   }
 
   render() {
@@ -55,4 +58,8 @@ const mapStateToProps = (state, ownProps) => ({
   state
 })
 
-export default connect(mapStateToProps)(Home)
+const mapDispatchToProps = dispatch => ({
+  fetchInitialList: () => dispatch(fetchInitialList())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
