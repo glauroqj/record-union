@@ -7,33 +7,30 @@ import {
   LIST_UPDATE_ERROR,
   ADD_NOTE_STARTED,
   ADD_NOTE_DONE,
-  ADD_NOTE_ERROR
+  ADD_NOTE_ERROR,
+  REMOVE_NOTE_STARTED,
+  REMOVE_NOTE_DONE,
+  REMOVE_NOTE_ERROR
 } from '../actions/noteActionsType'
 
-const notes = (state, action) => {
-  /** initial state */
-  state = {
-    list: []
-  }
+/** initial state */
+const initialState = {
+  list: [],
+  listLoading: true
+}
 
+const notes = (state = initialState, action) => {
   switch (action.type) {
-    case [FETCH_LIST_DONE]:
+    case FETCH_LIST_DONE:
+    console.log('REDUCER: ', state, action)
       return {
         ...state,
-        list: action.list,
-        loading: action.loading
+        list: action.list
       }
-    case 'DELETE_NOTE':
+    case ADD_NOTE_DONE:
       return {
         ...state,
-        name: action.user.name,
-        text: action.user.type,
-        authenticaded: true
-      }
-    case 'LIST_NOTES':
-      return {
-        ...state,
-        list: []
+        list: action.list
       }
     default:
       return state

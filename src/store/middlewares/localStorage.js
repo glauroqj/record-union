@@ -1,32 +1,41 @@
-const fetchListAsync = () => {
+const fetchListStorage = async () => {
   return new Promise((resolve, reject) => {
-    const serializedState = localStorage.getItem('list')
-    if (serializedState === null) {
+    const serializedData = localStorage.getItem('quick-notes')
+    if (serializedData === null) {
       /** return empty array */
-      resolve([])
+      resolve(null)
     }
-    resolve(JSON.parse(serializedState))
+    resolve(JSON.parse(serializedData))
   })
 }
 
-// const saveNote = ({ dispatch, getState }) => {
-//   try {
-//     const serializedState = JSON.stringify(state);
-//     localStorage.setItem('list', serializedState);
-//   } catch (err) {
-//     // die
-//   }
-// }
+const addNoteStorage = async text => {
+  let storage = await fetchListStorage()
+  console.log('STORAGE: ',storage)
+  return new Promise((resolve, reject) => {
+    if (storage) {
+      storage = storage.concat(text)
+    }
+    if (!storage) {
+      storage = [text]
+    }
+    const serializedData = JSON.stringify(storage)
+    localStorage.setItem('quick-notes', serializedData)
+    resolve(storage)
+  })
+}
 
-// const eraseNote = ({ dispatch, getState }) => {
-//   try {
-//     const serializedState = JSON.stringify(state);
-//     localStorage.setItem('list', serializedState);
-//   } catch (err) {
-//     // die
-//   }
-// }
+const removeNoteStorage = async (list, id) => {
+  return new Promise((resolve, reject) => {
+    const serializedData = list.split(id, 1)
+    const payload = JSON.stringify(serializedData)
+    localStorage.setItem('quick-notes', payload)
+    resolve(true)
+  })
+}
 
 export {
-  fetchListAsync
+  fetchListStorage,
+  addNoteStorage,
+  removeNoteStorage
 }
