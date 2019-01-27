@@ -66,13 +66,9 @@ const addNote = text => {
       console.log('Response ADD NOTE: ',item)
       dispatch(addNoteDone(item))
     }
-    // if (item) {
-    //   const payload = {
-    //     list,
-    //     listLoading: false
-    //   }
-    //   dispatch(fetchListDone(payload))
-    // }
+    if (!item) {
+      dispatch(addNoteError())
+    }
   }
 }
 

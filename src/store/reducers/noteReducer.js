@@ -16,7 +16,8 @@ const notes = (state = initialState, action) => {
     console.log('REDUCER: ', state, action)
       return {
         ...state,
-        list: action.list
+        list: action.list,
+        listLoading: false
       }
     case ADD_STATUS.ADD_DONE:
       return {

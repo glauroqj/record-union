@@ -1,21 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-import Loader from '../../ui/Loader'
+const ListItem = props => (
+  <ul className="list">
+    {props.list && props.list.map((item, index) => (
+      <li key={index}>
+        {item}
+      </li>
+    ))}
+  </ul>
+)
 
-class ListItem extends Component {
-  render() {
-    const { list } = this.props
-    return (
-      <>
-        {list.map(() => (
-          <li>
-
-          </li>
-        ))}
-      </>
-    )
-  }
+ListItem.propTypes = {
+  list: PropTypes.array
 }
 
 export default ListItem

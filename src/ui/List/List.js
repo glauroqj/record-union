@@ -3,17 +3,19 @@ import PropTypes from 'prop-types'
 
 import Grid from '@material-ui/core/Grid'
 
-import { ListItem, InsertItem } from '../../ui/List'
-import Loader from '../../ui/Loader'
+import { ListItem, InsertItem } from '../List'
+import { Loader } from '../Loader'
 
 class List extends Component {
   render() {
+    const { list, listLoading } = this.props.state
     return (
-      // <Loader />
-      <ul className="list">
-        <InsertItem />
-      </ul>
-      // <ListItem />
+      <>
+        {listLoading 
+          ? <Loader />
+          : [<ListItem list={list} />, <InsertItem />]
+        }
+      </>
     )
   }
 }

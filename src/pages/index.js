@@ -19,11 +19,13 @@ class Home extends Component {
   }
 
   render() {
+    const { notes } = this.props.state
     return (
       <Grid container className="" spacing={16}>
-        <Grid item xs={12}>
-          <h2>{this.props.state.notes.list.length}</h2>  
-          <List />
+        <Grid item xs={12}> 
+          <List state={notes} />
+
+          {/* <Button /> */}
         </Grid>
       </Grid>
     )
