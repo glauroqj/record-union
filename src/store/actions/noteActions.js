@@ -1,14 +1,7 @@
 import {
-  FETCH_LIST_STARTED,
-  FETCH_LIST_DONE,
-  FETCH_LIST_ERROR,
-  FETCH_LIST_DONE_EMPTY,
-  ADD_NOTE_STARTED,
-  ADD_NOTE_DONE,
-  ADD_NOTE_ERROR,
-  REMOVE_NOTE_STARTED,
-  REMOVE_NOTE_DONE,
-  REMOVE_NOTE_ERROR
+  FETCH_STATUS,
+  ADD_STATUS,
+  REMOVE_STATUS
 } from './noteActionsType'
 
 import {
@@ -18,38 +11,38 @@ import {
 } from '../middlewares/localStorage'
 
 const fetchListStarted = () => ({
-    type: FETCH_LIST_STARTED
+    type: FETCH_STATUS.FETCH_STARTED
 })
 const fetchListDone = list => ({
-  type: FETCH_LIST_DONE,
+  type: FETCH_STATUS.FETCH_DONE,
   list
 })
 const fetchListError = () => ({
-  type: FETCH_LIST_ERROR
+  type: FETCH_STATUS.FETCH_ERROR
 })
 const fetchListDoneEmpty = () => ({
-  type: FETCH_LIST_DONE_EMPTY
+  type: FETCH_STATUS.FETCH_EMPTY
 })
 
 const addNoteStarted = () => ({
-  type: ADD_NOTE_STARTED
+  type: ADD_STATUS.ADD_STARTED
 })
 const addNoteDone = list => ({
-  type: ADD_NOTE_DONE,
+  type: ADD_STATUS.ADD_DONE,
   list
 })
 const addNoteError = () => ({
-  type: ADD_NOTE_ERROR
+  type: ADD_STATUS.ADD_ERROR
 })
 
 const removeNoteStarted = () => ({
-  type: REMOVE_NOTE_STARTED
+  type: REMOVE_STATUS.REMOVE_STARTED
 })
 const removeNoteDone = () => ({
-  type: REMOVE_NOTE_DONE
+  type: REMOVE_STATUS.REMOVE_DONE
 })
 const removeNoteError = () => ({
-  type: REMOVE_NOTE_ERROR
+  type: REMOVE_STATUS.REMOVE_ERROR
 })
 
 /** thunk */
