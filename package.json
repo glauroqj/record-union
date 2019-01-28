@@ -11,7 +11,11 @@
     "start": "next start src"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.12",
+    "@fortawesome/free-solid-svg-icons": "^5.6.3",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@material-ui/core": "^3.9.0",
+    "classnames": "^2.2.6",
     "next": "^7.0.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

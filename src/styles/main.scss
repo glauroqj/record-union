@@ -1,1 +1,8 @@
-@import 'loading.scss';
+@import 'loader.scss';
+@import 'button.scss';
+
+html, body {
+  background: #323232;
+  color: #fff;
+  position: relative;
+}

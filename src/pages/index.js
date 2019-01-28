@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import Grid from '@material-ui/core/Grid'
 import { List } from '../ui/List'
+import { Balloon } from '../ui/Balloon'
 
 /** actions */
 import { fetchInitialList } from '../store/actions/noteActions'
@@ -24,8 +25,7 @@ class Home extends Component {
       <Grid container className="" spacing={16}>
         <Grid item xs={12}> 
           <List state={notes} />
-
-          {/* <Button /> */}
+          <Balloon />
         </Grid>
       </Grid>
     )
