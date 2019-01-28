@@ -15,7 +15,7 @@ class Button extends PureComponent {
   }
 
   render() {
-    const { type } = this.props
+    const { type, click } = this.props
 
     const btnClassName = classNames('btn', {
       remove: type === 'remove',
@@ -25,7 +25,7 @@ class Button extends PureComponent {
 
     return (
       <>
-        <button className={btnClassName}>
+        <button className={btnClassName} type="button" onClick={click}>
           <FontAwesomeIcon icon={this.chooseIcon(type)} />
         </button>
       </>

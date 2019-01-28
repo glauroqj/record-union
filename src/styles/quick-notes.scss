@@ -2,4 +2,14 @@
   position: absolute;
   bottom: 15px;
   right: 15px;
+
+  &.popup {
+    position: absolute;
+    bottom: 100%;
+    right: 60%;
+  }
+
+  &.ballon {
+    position: absolute;
+  }
 }

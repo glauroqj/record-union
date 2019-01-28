@@ -5,11 +5,24 @@ import { Button } from '../Button'
 
 class QuickNotes extends Component {
 
+  state = {
+    isCollapsed: true
+  }
+
+  tooglePopup = (e) => {
+    const { isCollapsed } = this.state
+    const newValue = !isCollapsed
+    this.setState({ isCollapsed: newValue })
+  }
+
   render() {
+    const { isCollapsed } = this.state
     return (
       <div className="quick-notes">
-        <Popup />
-        <Button type="balloon" />
+        {!isCollapsed && (
+            <Popup />
+        )}
+        <Button type="balloon" click={this.tooglePopup} />
       </div>
     )
   }

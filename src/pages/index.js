@@ -5,10 +5,10 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import { List } from '../ui/List'
 import { QuickNotes } from '../ui/QuickNotes'
+import { Loader } from '../ui/Loader'
 
 /** actions */
 import { fetchInitialList } from '../store/actions/noteActions'
-import { Loader } from '../ui/Loader';
 
 class Home extends Component {
   static getInitialProps = async ({ reduxStore, req }) => {

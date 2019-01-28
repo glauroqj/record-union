@@ -7,7 +7,7 @@ class Popup extends Component {
   render() {
     return (
       <div className="popup">
-        {/* <List /> */}
+        <List />
         <InsertItem />
       </div>
     )
