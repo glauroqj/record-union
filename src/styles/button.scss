@@ -1,0 +1,22 @@
+.btn {
+  outline: none;
+  border: 0px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.remove {
+    background-color: #e74c3c;
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  &.send {
+
+  }
+
+  &.balloon {
+    
+  }
+}
