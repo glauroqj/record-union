@@ -4,10 +4,11 @@ import PropTypes from 'prop-types'
 
 import Grid from '@material-ui/core/Grid'
 import { List } from '../ui/List'
-import { Balloon } from '../ui/Balloon'
+import { QuickNotes } from '../ui/QuickNotes'
 
 /** actions */
 import { fetchInitialList } from '../store/actions/noteActions'
+import { Loader } from '../ui/Loader';
 
 class Home extends Component {
   static getInitialProps = async ({ reduxStore, req }) => {
@@ -20,12 +21,14 @@ class Home extends Component {
   }
 
   render() {
-    const { notes } = this.props.state
+    const { listLoading } = this.props.state.notes
     return (
       <Grid container className="" spacing={16}>
-        <Grid item xs={12}> 
-          <List state={notes} />
-          <Balloon />
+        <Grid item xs={12}>
+          {listLoading 
+            ? <Loader />
+            : [<List key={1} />, <QuickNotes key={2} />]
+          }
         </Grid>
       </Grid>
     )
@@ -40,4 +43,7 @@ const mapDispatchToProps = dispatch => ({
   fetchInitialList: () => dispatch(fetchInitialList())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(Home)

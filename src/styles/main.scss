@@ -1,8 +1,11 @@
+@import 'variables.scss';
+@import 'quick-notes.scss';
 @import 'loader.scss';
 @import 'button.scss';
 
 html, body {
   background: #323232;
   color: #fff;
+  height: 100%;
   position: relative;
 }

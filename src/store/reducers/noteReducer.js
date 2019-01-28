@@ -13,10 +13,15 @@ const initialState = {
 const notes = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_STATUS.FETCH_DONE:
-    console.log('REDUCER: ', state, action)
+    console.log('FETCH DONE: ', state, action)
       return {
         ...state,
         list: action.list,
+        listLoading: false
+      }
+    case FETCH_STATUS.FETCH_EMPTY:
+      return {
+        ...state,
         listLoading: false
       }
     case ADD_STATUS.ADD_DONE:

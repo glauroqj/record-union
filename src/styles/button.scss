@@ -17,6 +17,9 @@
   }
 
   &.balloon {
-    
+    padding: 10px 12px;
+    border-radius: 50%;
+    background-color: $main-color;
+    color: $secondary-color;
   }
 }
