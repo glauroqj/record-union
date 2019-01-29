@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const ListItem = props => (
-  <ul className="list">
+  <ul>
     {props.list && props.list.map((item, index) => (
-      <li key={index}>
+      <li className="list-item" key={index}>
         {item}
       </li>
     ))}

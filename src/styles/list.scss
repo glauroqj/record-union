@@ -1,0 +1,29 @@
+.list {
+
+  ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+
+  .list-item {
+
+  }
+
+  &.list-popup {
+    max-height: 180px;
+    overflow: scroll;
+  }
+
+  &.insert-item {
+    display: flex;
+
+    input {
+      flex: 1;
+    }
+
+    button {
+
+    }
+  }
+}

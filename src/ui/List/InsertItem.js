@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Grid from '@material-ui/core/Grid'
-
 import Loader from '../../ui/Loader'
 
 /** actions */
@@ -30,14 +28,10 @@ class InsertItem extends Component {
   render() {
     const { text } = this.state
     return (
-      <Grid container className="" spacing={16}>
-        <Grid item xs={8}>
-          <input type="text" value={text} onChange={this.handleInput} />
-        </Grid>
-        <Grid item xs={4}>
-          <button onClick={this.sendNote}>CLICK</button>
-        </Grid>
-      </Grid>
+      <div className="insert-item">
+        <input type="text" value={text} onChange={this.handleInput} />
+        <button onClick={this.sendNote}>CLICK</button>
+      </div>
     )
   }
 }
