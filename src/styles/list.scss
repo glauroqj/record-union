@@ -8,16 +8,51 @@
 
   .list-item {
     display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.5s;
 
-    span {
+    &:hover {
+      background-color: #eee;
+
+      button {
+        display: block;
+      }
+    }
+
+    > div {
       flex: 1;
+      position: relative;
+      padding: 0px 10px 0px 25px;
+      margin: 0px 25px 0px 0px;
+
+      span {
+        font-size: 10px;
+        color: #cecece;
+        position: absolute;
+        left: 0px;
+        bottom: -10px;
+      }
+    }
+
+    button {
+      display: none;
     }
   }
 
   &.list-popup {
     max-height: 180px;
     min-height: 180px;
+    max-width: 200px;
     overflow: scroll;
+    text-align: left;
+
+    .list-item {
+
+      > div {
+        padding: 0px 5px 0px 15px;
+      }
+    }
   }
 
   &.insert-item {

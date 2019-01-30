@@ -7,7 +7,9 @@ const ListItem = props => (
   <ul>
     {props.list && props.list.map((item, index) => (
       <li className="list-item" key={index}>
-        <div>{item}</div>
+        <div>
+          <span>{`${index} `}</span>{`${item}`}
+        </div>
         <Button type="remove" click={props.removeNoteList(index)} />
       </li>
     ))}

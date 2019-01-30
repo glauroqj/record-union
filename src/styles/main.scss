@@ -1,3 +1,4 @@
+@import 'font.scss';
 @import 'variables.scss';
 @import 'normalize.scss';
 @import 'flexboxgrid.scss';
@@ -7,9 +8,9 @@
 @import 'button.scss';
 
 html, body {
-  background: #323232;
-  color: #fff;
+  height: 100%;
   overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
 
   .container-list {
     display: flex;
