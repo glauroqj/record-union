@@ -9,7 +9,11 @@
 html, body {
   background: #323232;
   color: #fff;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  overflow-x: hidden;
+
+  .container-list {
+    display: flex;
+    min-height: 90vh;
+    flex-direction: column;
+  }
 }

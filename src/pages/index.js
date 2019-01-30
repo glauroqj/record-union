@@ -22,12 +22,14 @@ class Home extends Component {
   render() {
     const { listLoading } = this.props.state.notes
     return (
-      <div className="container-fluid">
-        {listLoading 
-          ? <Loader text="Loading..." />
-          : [<List key={1} />, <QuickNotes key={2} />]
-        }
-      </div>
+      <>
+        <div className="container-fluid">
+          {listLoading 
+            ? <Loader text="Loading..." />
+            : [<List key={1} />, <QuickNotes key={2} />]
+          }
+        </div>
+      </>
     )
   }
 }

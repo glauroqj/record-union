@@ -19,9 +19,13 @@ class List extends Component {
   render() {
     const { list } = this.props.state.notes
     const { popup } = this.props
-    const gridClass = classNames('col-xs-12 col-sm-8 col-md-6 col-lg-4')
+    const gridClass = classNames({
+      'col-xs-12': popup,
+      'col-xs-12 col-sm-8 col-md-6 col-lg-4': !popup
+    })
     const listClass = classNames('list', {
-      'list-popup': popup
+      'list-popup': popup,
+      'container-list': !popup
     })
 
     const listItemProps = {
