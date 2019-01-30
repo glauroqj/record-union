@@ -1,4 +1,6 @@
 @import 'variables.scss';
+@import 'normalize.scss';
+@import 'flexboxgrid.scss';
 @import 'quick-notes.scss';
 @import 'list.scss';
 @import 'loader.scss';
@@ -7,6 +9,7 @@
 html, body {
   background: #323232;
   color: #fff;
-  height: 100%;
-  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }

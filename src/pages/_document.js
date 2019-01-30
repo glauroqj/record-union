@@ -8,10 +8,10 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta name="robots" content="index, follow" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-          <meta name="Description" content="Save Lunch" />
+          <meta name="Description" content="Quick Notes" />
           <meta name="keywords" content=""/>
         </Head>
-        <body className="custom_class">
+        <body>
           <Main />
           <NextScript />
         </body>
