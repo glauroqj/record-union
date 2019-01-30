@@ -3,11 +3,19 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import Grid from '@material-ui/core/Grid'
-
 import { ListItem } from '../List'
 
+/** actions */
+import { removeNote } from '../../store/actions/noteActions'
+
 class List extends Component {
+
+  removeNoteList = (id) => (e) => {
+    const { removeNote } = this.props
+    console.log('REMOVE NOTE: ', id, e)
+    removeNote(id)
+  }
+
   render() {
     const { list } = this.props.state.notes
     const { popup } = this.props
@@ -15,11 +23,16 @@ class List extends Component {
       'list-popup': popup
     })
 
+    const listItemProps = {
+      list,
+      removeNoteList: this.removeNoteList
+    }
+
     return (
       <div className={listClass}>
         {list.length === 0 
           ? <h5>No quick notes</h5>
-          : <ListItem list={list} />
+          : <ListItem {...listItemProps} />
         }
       </div>
     )
@@ -30,4 +43,11 @@ const mapStateToProps = (state, ownProps) => ({
   state
 })
 
-export default connect(mapStateToProps)(List)
+const mapDispatchToProps = dispatch => ({
+  removeNote: id => dispatch(removeNote(id))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps 
+)(List)

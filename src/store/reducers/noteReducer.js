@@ -29,6 +29,11 @@ const notes = (state = initialState, action) => {
         ...state,
         list: action.list
       }
+    case REMOVE_STATUS.REMOVE_DONE:
+      return {
+        ...state,
+        list: action.list
+      }
     default:
       return state
   }

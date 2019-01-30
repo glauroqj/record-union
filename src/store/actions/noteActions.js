@@ -38,8 +38,9 @@ const addNoteError = () => ({
 const removeNoteStarted = () => ({
   type: REMOVE_STATUS.REMOVE_STARTED
 })
-const removeNoteDone = () => ({
-  type: REMOVE_STATUS.REMOVE_DONE
+const removeNoteDone = list => ({
+  type: REMOVE_STATUS.REMOVE_DONE,
+  list
 })
 const removeNoteError = () => ({
   type: REMOVE_STATUS.REMOVE_ERROR
@@ -61,13 +62,27 @@ const addNote = text => {
   return async (dispatch, getState) => {
     dispatch(addNoteStarted())
     /** async */
-    const item = await addNoteStorage(text)
-    if (item) {
-      console.log('Response ADD NOTE: ',item)
-      dispatch(addNoteDone(item))
+    const newList = await addNoteStorage(text)
+    if (newList) {
+      console.log('Response ADD NOTE: ',newList)
+      dispatch(addNoteDone(newList))
     }
-    if (!item) {
+    if (!newList) {
       dispatch(addNoteError())
+    }
+  }
+}
+
+const removeNote = id => {
+  return async (dispatch, getState) => {
+    dispatch(removeNoteStarted())
+    const newList = await removeNoteStorage(id)
+    if (newList) {
+      console.log('Response REMOVE NOTE: ', newList)
+      dispatch(removeNoteDone(newList))
+    }
+    if (!newList) {
+      dispatch(removeNoteError())
     }
   }
 }

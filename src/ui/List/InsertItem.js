@@ -44,4 +44,7 @@ const mapDispatchToProps = dispatch => ({
   addNote: text => dispatch(addNote(text))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(InsertItem)
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(InsertItem)
