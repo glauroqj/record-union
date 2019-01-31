@@ -24,8 +24,8 @@ class Home extends Component {
     return (
       <>
         <div className="container-fluid">
-          {listLoading 
-            ? <Loader text="Loading..." />
+          {listLoading
+            ? <Loader text="Loading" size={30} color="#011688" />
             : [<List key={1} />, <QuickNotes list={list} key={2} />]
           }
         </div>

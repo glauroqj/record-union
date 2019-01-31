@@ -6,6 +6,14 @@
     list-style: none;
   }
 
+  .no-notes {
+    color: #cecece;
+    font-style: italic;
+    font-weight: 100;
+    text-align: center;
+    padding: 10px;
+  }
+
   .list-item {
     display: flex;
     min-height: 18px;
