@@ -38,7 +38,7 @@ class List extends Component {
         <div className={gridClass}>
           <div className={listClass}>
             {list.length === 0 
-              ? <h5>No quick notes</h5>
+              ? <div className="no-notes">No quick notes</div>
               : <ListItem {...listItemProps} />
             }
           </div>

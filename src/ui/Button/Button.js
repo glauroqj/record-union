@@ -14,6 +14,14 @@ class Button extends PureComponent {
     return ''
   }
 
+  showTotal = () => {
+    const { type, totalNotes } = this.props
+    const totalClass =  classNames('total-notes',{
+      dots: totalNotes >= 1000
+    })
+    if (type === 'balloon') return <div className={totalClass}>{totalNotes}</div>
+  }
+
   render() {
     const { type, click } = this.props
 
@@ -27,18 +35,21 @@ class Button extends PureComponent {
       <>
         <button className={btnClassName} type="button" onClick={click}>
           <FontAwesomeIcon icon={this.chooseIcon(type)} />
+          {this.showTotal()}
         </button>
       </>
     )
   }
 }
 
-Button.propTypes = {
-  type: PropTypes.string
+Button.defaultProps = {
+  totalNotes: 0
 }
 
-Button.defaultProps = {
-  type: ''
+Button.propTypes = {
+  type: PropTypes.string.isRequired,
+  click: PropTypes.func.isRequired,
+  totalNotes: PropTypes.number
 }
 
 export default Button

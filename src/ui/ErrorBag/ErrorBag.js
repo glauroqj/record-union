@@ -6,7 +6,7 @@ const ErrorBag = props => (
     {props.errorbag.length > 0 && (
       <div className="errorbag">
         {props.errorbag.map((item, index) => (
-          <div>
+          <div key={index}>
             <span>{`${item} `}</span>
           </div>
         ))}

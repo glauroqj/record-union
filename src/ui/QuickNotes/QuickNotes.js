@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Popup } from './'
@@ -17,6 +18,7 @@ class QuickNotes extends Component {
   }
 
   render() {
+    const { list } = this.props
     const { isCollapsed } = this.state
     const gridClass =classNames('col-lg-offset-9 col-xs-8 col-sm-8 col-md-6 col-lg-3')
 
@@ -27,12 +29,20 @@ class QuickNotes extends Component {
               {!isCollapsed && (
                   <Popup />
               )}
-              <Button type="balloon" click={this.tooglePopup} />
+              <Button type="balloon" totalNotes={list.length} click={this.tooglePopup} />
           </div>
         </div>
       </div>
     )
   }
+}
+
+QuickNotes.defaultProps = {
+  list: []
+}
+
+QuickNotes.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default QuickNotes
