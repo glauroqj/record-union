@@ -9,15 +9,17 @@
   .list-item {
     display: flex;
     min-height: 18px;
-    padding: 10px;
+    padding: 10px;    
     border-bottom: 1px solid #eee;
     transition: background-color 0.5s;
 
     &:hover {
-      background-color: #eee;
+      background-color: #f9f9f9;
 
       .btn-item  {
-        // display: block;
+        button {
+          display: block;
+        }
       }
     }
 
@@ -25,22 +27,25 @@
       flex: 1;
       width: 90%;
       position: relative;
-      // padding: 0px 10px 0px 25px;
-      // margin: 0px 25px 0px 0px;
+      padding: 0 0 0 10px;
       overflow-wrap: break-word;
 
       span {
         font-size: 10px;
         color: #cecece;
         position: absolute;
-        left: 0px;
+        left: -5px;
         bottom: -10px;
       }
     }
 
     .btn-item {
+      width: 20px;
       align-self: center;
-      // display: none;
+
+      button {
+        display: none;
+      }
     }
   }
 
@@ -48,12 +53,13 @@
     max-height: 180px;
     min-height: 180px;
     max-width: 200px;
-    overflow: scroll;
+    overflow-wrap: break-word;
+    overflow: auto;
     text-align: left;
 
     .list-item {
 
-      > div {
+      .text-item {
         padding: 0px 5px 0px 15px;
       }
     }
