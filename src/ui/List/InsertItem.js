@@ -45,7 +45,16 @@ class InsertItem extends Component {
         placeholder: ''
       })
       document.getElementById('insert-input').focus()
-    }, 1200)
+      this.scrollLists()
+    }, 1050)
+  }
+
+  scrollLists = () => {
+    const { list } = this.props.state.notes
+    const lists = ['.list.list-popup li', '.list.container-list li']
+    lists.forEach((item) => {
+      document.querySelectorAll(item)[(list.length - 1)].scrollIntoView()
+    })
   }
 
   render() {

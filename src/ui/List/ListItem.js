@@ -8,7 +8,7 @@ const ListItem = props => (
   <ul>
     {props.list && props.list.map((item, index) => (
       <React.Fragment key={index}>
-        <li className="list-item">
+        <li id={index} className="list-item">
           <div className="text-item">
             <span>{`${index + 1} `}</span>{`${item.text}`}
           </div>
