@@ -8,6 +8,7 @@
 
   .list-item {
     display: flex;
+    min-height: 18px;
     padding: 10px;
     border-bottom: 1px solid #eee;
     transition: background-color 0.5s;
@@ -15,16 +16,18 @@
     &:hover {
       background-color: #eee;
 
-      button {
-        display: block;
+      .btn-item  {
+        // display: block;
       }
     }
 
-    > div {
+    .text-item {
       flex: 1;
+      width: 90%;
       position: relative;
-      padding: 0px 10px 0px 25px;
-      margin: 0px 25px 0px 0px;
+      // padding: 0px 10px 0px 25px;
+      // margin: 0px 25px 0px 0px;
+      overflow-wrap: break-word;
 
       span {
         font-size: 10px;
@@ -35,8 +38,9 @@
       }
     }
 
-    button {
-      display: none;
+    .btn-item {
+      align-self: center;
+      // display: none;
     }
   }
 

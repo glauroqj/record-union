@@ -13,7 +13,7 @@ const initialState = {
 const notes = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_STATUS.FETCH_DONE:
-    console.log('FETCH DONE: ', state, action)
+    console.log('FETCH DONE: ', action)
       return {
         ...state,
         list: action.list,

@@ -1,3 +1,5 @@
+import { validate } from '../../utils/validate'
+
 const fetchListStorage = async () => {
   return new Promise((resolve, reject) => {
     const serializedData = localStorage.getItem('quick-notes')
@@ -14,10 +16,14 @@ const addNoteStorage = async text => {
   console.log('STORAGE: ',storage)
   return new Promise((resolve, reject) => {
     if (storage) {
-      storage = storage.concat(text)
+      const note = validate(text)
+      storage = storage.concat(note)
+      console.log('ADD NOTE VALIDATION: ', storage)
     }
     if (!storage) {
-      storage = [text]
+      storage = [validate(text)]
+      console.log('ADD NOTE VALIDATION: ', storage)
+      // storage = [text]
     }
     const serializedData = JSON.stringify(storage)
     localStorage.setItem('quick-notes', serializedData)

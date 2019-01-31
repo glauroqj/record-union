@@ -7,17 +7,19 @@ const ListItem = props => (
   <ul>
     {props.list && props.list.map((item, index) => (
       <li className="list-item" key={index}>
-        <div>
-          <span>{`${index} `}</span>{`${item}`}
+        <div className="text-item">
+          <span>{`${index} `}</span>{`${item.text}`}
         </div>
-        <Button type="remove" click={props.removeNoteList(index)} />
+        <div className="btn-item">
+          <Button type="remove" click={props.removeNoteList(index)} />
+        </div>
       </li>
     ))}
   </ul>
 )
 
 ListItem.propTypes = {
-  list: PropTypes.array,
+  list: PropTypes.arrayOf(PropTypes.object),
   removeNoteList: PropTypes.func
 }
 
