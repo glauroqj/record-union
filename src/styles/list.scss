@@ -50,30 +50,29 @@
   }
 
   &.list-popup {
-    max-height: 180px;
-    min-height: 180px;
-    max-width: 200px;
-    overflow-wrap: break-word;
-    overflow: auto;
-    text-align: left;
+    max-height: 230px;
+    overflow: scroll;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 15px;
 
     .list-item {
 
       .text-item {
         padding: 0px 5px 0px 15px;
+        font-size: 0.9em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        span {
+          font-size: 9px;
+          color: #cecece;
+          position: absolute;
+          left: 0px;
+          bottom: 0px;
+        }
       }
-    }
-  }
-
-  &.insert-item {
-    display: flex;
-
-    input {
-      flex: 1;
-    }
-
-    button {
-
     }
   }
 }

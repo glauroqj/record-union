@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faTimes, faCommentAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faTimes, faCommentAlt } from '@fortawesome/free-solid-svg-icons'
 
 class Button extends PureComponent {
 
   chooseIcon = (type) => {
     if (type === 'remove') return faTimes
-    if (type === 'send') return faCheck
+    if (type === 'send') return faPlus
     if (type === 'balloon') return faCommentAlt
     return ''
   }

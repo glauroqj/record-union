@@ -19,13 +19,18 @@
   }
 
   &.send {
-
+    background-color: $secondary-color;
+    color: #fff;
+    padding: 6px 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 
   &.balloon {
-    padding: 10px 12px;
+    padding: 12px 14px;
     border-radius: 50%;
     background-color: $main-color;
     color: $secondary-color;
+    font-size: 1.6em;
   }
 }

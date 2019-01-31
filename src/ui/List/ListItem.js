@@ -10,7 +10,7 @@ const ListItem = props => (
       <React.Fragment key={index}>
         <li className="list-item">
           <div className="text-item">
-            <span>{`${index} `}</span>{`${item.text}`}
+            <span>{`${index + 1} `}</span>{`${item.text}`}
           </div>
           <div className="btn-item">
             <Button type="remove" click={props.removeNoteList(index)} />

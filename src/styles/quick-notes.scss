@@ -12,10 +12,43 @@
   // right: 0px;
 
   .popup {
-    // align-self: flex-end;
-    // width: 200px;
-    // height: 200px;
-    // position: fixed;
-    // bottom: 60px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    border-bottom-right-radius: 0;
+    max-height: 350px;
+    min-height: 50px;
+    max-width: 320px;
+    padding: 10px;
+    margin: 0 0px 15px 0;
+    overflow-wrap: break-word;
+    overflow: auto;
+    text-align: left;
+    overflow-x: hidden;
+    background-color: #f4f4f4;
+
+    .insert-item {
+      display: flex;
+      background-color: #f5f5f5;
+      width: 100%;
+  
+      input {
+        flex: 1;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border: 1px solid #f5f5f5;
+        outline: none;
+        padding: 5px;
+        color: #323232;
+        letter-spacing: .8px;
+
+        &:focus {
+          border-color: $secondary-color;
+        }
+      }
+  
+      button {
+  
+      }
+    }
   }
 }

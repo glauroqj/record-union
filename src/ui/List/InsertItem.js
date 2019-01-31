@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Loader from '../../ui/Loader'
+import { Button } from '../Button'
 
 /** actions */
 import { addNote } from '../../store/actions/noteActions'
@@ -19,19 +20,33 @@ class InsertItem extends Component {
     this.setState(state)
   }
 
-  sendNote = () => {
+  sendNote = (e) => {
     const { addNote } = this.props
     const { text } = this.state
     addNote(text)
+    this.setState({ text: '' })
+  }
+
+  sendForm = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      this.sendNote()
+    }
   }
 
   render() {
     const { text } = this.state
     return (
-      <div className="insert-item">
-        <input type="text" value={text} onChange={this.handleInput} />
-        <button onClick={this.sendNote}>CLICK</button>
-      </div>
+      <form onKeyDown={this.sendForm}>
+        <div className="row">
+          <div className="col-xs-12">
+            <div className="insert-item">
+                <input type="text" value={text} onChange={this.handleInput} />
+                <Button type="send" click={this.sendNote} />
+            </div>
+          </div>
+        </div>
+      </form>
     )
   }
 }

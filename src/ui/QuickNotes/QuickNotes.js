@@ -7,7 +7,7 @@ import { Button } from '../Button'
 class QuickNotes extends Component {
 
   state = {
-    isCollapsed: true
+    isCollapsed: !true
   }
 
   tooglePopup = (e) => {
