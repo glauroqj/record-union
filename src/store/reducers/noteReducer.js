@@ -7,7 +7,8 @@ import {
 /** initial state */
 const initialState = {
   list: [],
-  listLoading: true
+  listLoading: true,
+  btnLoading: false
 }
 
 const notes = (state = initialState, action) => {
@@ -17,17 +18,23 @@ const notes = (state = initialState, action) => {
       return {
         ...state,
         list: action.list,
-        listLoading: false
+        listLoading: action.loading
       }
     case FETCH_STATUS.FETCH_EMPTY:
       return {
         ...state,
-        listLoading: false
+        listLoading: action.loading
       }
+    case ADD_STATUS.ADD_STARTED:
+      return {
+        ...state,
+        btnLoading: action.loading
+    }
     case ADD_STATUS.ADD_DONE:
       return {
         ...state,
-        list: action.list
+        list: action.list,
+        btnLoading: action.loading
       }
     case REMOVE_STATUS.REMOVE_DONE:
       return {

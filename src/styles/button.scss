@@ -24,6 +24,12 @@
     padding: 6px 20px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    transition: background-color 0.5s;
+
+    &.disabled {
+      pointer-events: none;
+      background-color: $secondary-color-light;
+    }
   }
 
   &.balloon {

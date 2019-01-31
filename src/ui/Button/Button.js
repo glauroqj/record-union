@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTimes, faCommentAlt } from '@fortawesome/free-solid-svg-icons'
+import { Loader } from '../Loader'
 
 class Button extends PureComponent {
 
@@ -23,18 +24,31 @@ class Button extends PureComponent {
   }
 
   render() {
-    const { type, click } = this.props
+    const { 
+      type,
+      click, 
+      loading 
+    } = this.props
 
     const btnClassName = classNames('btn', {
       remove: type === 'remove',
       send: type === 'send',
-      balloon: type === 'balloon'
+      balloon: type === 'balloon',
+      disabled: loading
     })
 
     return (
       <>
-        <button className={btnClassName} type="button" onClick={click}>
-          <FontAwesomeIcon icon={this.chooseIcon(type)} />
+        <button 
+          className={btnClassName} 
+          type="button" 
+          onClick={click}
+          disabled={loading}
+        >
+          {loading
+            ? <Loader size={14} color="#fff" />
+            : <FontAwesomeIcon icon={this.chooseIcon(type)} />
+          }
           {this.showTotal()}
         </button>
       </>
@@ -49,7 +63,8 @@ Button.defaultProps = {
 Button.propTypes = {
   type: PropTypes.string.isRequired,
   click: PropTypes.func.isRequired,
-  totalNotes: PropTypes.number
+  totalNotes: PropTypes.number,
+  loading: PropTypes.bool
 }
 
 export default Button

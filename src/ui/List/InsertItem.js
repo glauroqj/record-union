@@ -9,8 +9,9 @@ import { Button } from '../Button'
 import { addNote } from '../../store/actions/noteActions'
 
 class InsertItem extends Component {
-  state ={
-    text: ''
+  state = {
+    text: '',
+    placeholder: ''
   }
 
   handleInput = (e) => {
@@ -23,8 +24,12 @@ class InsertItem extends Component {
   sendNote = (e) => {
     const { addNote } = this.props
     const { text } = this.state
+    this.setState({
+      text: '',
+      placeholder: 'Sending...'
+    })
+    this.resetState()
     addNote(text)
-    this.setState({ text: '' })
   }
 
   sendForm = (e) => {
@@ -34,15 +39,41 @@ class InsertItem extends Component {
     }
   }
 
+  resetState = () => {
+    setTimeout(() => {
+      this.setState({ 
+        placeholder: ''
+      })
+      document.getElementById('insert-input').focus()
+    }, 1200)
+  }
+
   render() {
-    const { text } = this.state
+    const { btnLoading } = this.props.state.notes
+    const { 
+      text,
+      placeholder
+     } = this.state
+
     return (
       <form onKeyDown={this.sendForm}>
         <div className="row">
           <div className="col-xs-12">
             <div className="insert-item">
-                <input type="text" value={text} onChange={this.handleInput} />
-                <Button type="send" click={this.sendNote} />
+              <input 
+                id="insert-input"
+                type="text" 
+                value={text} 
+                onChange={this.handleInput} 
+                disabled={btnLoading}
+                placeholder={placeholder}
+                autoFocus={true}
+              />
+              <Button 
+                type="send" 
+                click={this.sendNote} 
+                loading={btnLoading} 
+              />
             </div>
           </div>
         </div>

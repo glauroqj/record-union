@@ -15,24 +15,29 @@ const fetchListStarted = () => ({
 })
 const fetchListDone = list => ({
   type: FETCH_STATUS.FETCH_DONE,
-  list
+  list,
+  loading: false
 })
 const fetchListError = () => ({
   type: FETCH_STATUS.FETCH_ERROR
 })
 const fetchListDoneEmpty = () => ({
-  type: FETCH_STATUS.FETCH_EMPTY
+  type: FETCH_STATUS.FETCH_EMPTY,
+  loading: false
 })
 
 const addNoteStarted = () => ({
-  type: ADD_STATUS.ADD_STARTED
+  type: ADD_STATUS.ADD_STARTED,
+  loading: true
 })
 const addNoteDone = list => ({
   type: ADD_STATUS.ADD_DONE,
-  list
+  list,
+  loading: false
 })
 const addNoteError = () => ({
-  type: ADD_STATUS.ADD_ERROR
+  type: ADD_STATUS.ADD_ERROR,
+  loading: false
 })
 
 const removeNoteStarted = () => ({
