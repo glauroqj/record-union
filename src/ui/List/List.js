@@ -17,7 +17,10 @@ class List extends Component {
   }
 
   render() {
-    const { list } = this.props.state.notes
+    const { 
+      list, 
+      btnRemoveLoading 
+    } = this.props.state.notes
     const { popup } = this.props
     const gridClass = classNames({
       'col-xs-12': popup,
@@ -30,7 +33,8 @@ class List extends Component {
 
     const listItemProps = {
       list,
-      removeNoteList: this.removeNoteList
+      removeNoteList: this.removeNoteList,
+      btnRemoveLoading
     }
 
     return (

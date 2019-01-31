@@ -10,10 +10,17 @@ const ListItem = props => (
       <React.Fragment key={index}>
         <li id={index} className="list-item">
           <div className="text-item">
-            <span>{`${index + 1} `}</span>{`${item.text}`}
+            <span>{`${index}`}</span>{`${item.text}`}
+            {(props.btnRemoveLoading === index) && (
+              <span className="text-item-remove">Removing...</span>
+            )}
           </div>
           <div className="btn-item">
-            <Button type="remove" click={props.removeNoteList(index)} />
+            <Button 
+              type="remove" 
+              click={props.removeNoteList(index)}
+              loading={props.btnRemoveLoading === index}
+            />
           </div>
         </li>
         <ErrorBag errorbag={item.errorbag} />

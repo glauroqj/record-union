@@ -2,13 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Loader from '../../ui/Loader'
 import { Button } from '../Button'
 
 /** actions */
-import { addNote } from '../../store/actions/noteActions'
+import { 
+  addNote,
+  updateListDone
+ } from '../../store/actions/noteActions'
 
 class InsertItem extends Component {
+  componentDidUpdate() {
+    const { updateList } = this.props.state.notes
+    if (updateList) this.updateList()
+  }
+
   state = {
     text: '',
     placeholder: ''
@@ -24,12 +31,11 @@ class InsertItem extends Component {
   sendNote = (e) => {
     const { addNote } = this.props
     const { text } = this.state
-    this.setState({
-      text: '',
-      placeholder: 'Sending...'
-    })
-    this.resetState()
     addNote(text)
+    this.setState({ 
+      text: '',
+      placeholder: 'Sending...' 
+    })
   }
 
   sendForm = (e) => {
@@ -39,26 +45,29 @@ class InsertItem extends Component {
     }
   }
 
-  resetState = () => {
-    setTimeout(() => {
-      this.setState({ 
-        placeholder: ''
-      })
-      document.getElementById('insert-input').focus()
-      this.scrollLists()
-    }, 1050)
-  }
-
-  scrollLists = () => {
+  updateList = () => {
+    const { updateListDone } = this.props
     const { list } = this.props.state.notes
+
     const lists = ['.list.list-popup li', '.list.container-list li']
-    lists.forEach((item) => {
-      document.querySelectorAll(item)[(list.length - 1)].scrollIntoView()
+    this.setState({
+      text: '',
+      placeholder: ''
     })
+    document.getElementById('insert-input').focus()
+    lists.forEach((item) => {
+      setTimeout(() => {
+        document.querySelectorAll(item)[(list.length - 1)].scrollIntoView()
+      }, 100)
+    })
+
+    /** send dispatch to updateList false */
+    updateListDone()
   }
 
   render() {
     const { btnLoading } = this.props.state.notes
+
     const { 
       text,
       placeholder
@@ -96,7 +105,8 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addNote: text => dispatch(addNote(text))
+  addNote: text => dispatch(addNote(text)),
+  updateListDone: () => dispatch(updateListDone())
 })
 
 export default connect(

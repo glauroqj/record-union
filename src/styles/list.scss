@@ -45,6 +45,12 @@
         left: -5px;
         bottom: -10px;
       }
+
+      .text-item-remove {
+        position: absolute;
+        left: 10px;
+        bottom: -10px;
+      }
     }
 
     .btn-item {
@@ -78,6 +84,12 @@
           color: #cecece;
           position: absolute;
           left: 0px;
+          bottom: 0px;
+        }
+
+        .text-item-remove {
+          position: absolute;
+          left: 15px;
           bottom: 0px;
         }
       }

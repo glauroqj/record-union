@@ -1,7 +1,8 @@
 import {
   FETCH_STATUS,
   ADD_STATUS,
-  REMOVE_STATUS
+  REMOVE_STATUS,
+  UPDATE_STATUS
 } from './noteActionsType'
 
 import {
@@ -40,15 +41,26 @@ const addNoteError = () => ({
   loading: false
 })
 
-const removeNoteStarted = () => ({
-  type: REMOVE_STATUS.REMOVE_STARTED
+const removeNoteStarted = (id) => ({
+  type: REMOVE_STATUS.REMOVE_STARTED,
+  loading: id
 })
 const removeNoteDone = list => ({
   type: REMOVE_STATUS.REMOVE_DONE,
-  list
+  list,
+  loading: false
 })
 const removeNoteError = () => ({
   type: REMOVE_STATUS.REMOVE_ERROR
+})
+
+const updateListStarted = () => ({
+  type: UPDATE_STATUS.UPDATE_STARTED,
+  update: true
+})
+const updateListDone = () => ({
+  type: UPDATE_STATUS.UPDATE_DONE,
+  update: false
 })
 
 /** thunk */
@@ -71,16 +83,18 @@ const addNote = text => {
     if (newList) {
       console.log('Response ADD NOTE: ',newList)
       dispatch(addNoteDone(newList))
+      dispatch(updateListStarted())
     }
     if (!newList) {
       dispatch(addNoteError())
+      dispatch(updateListDone())
     }
   }
 }
 
 const removeNote = id => {
   return async (dispatch, getState) => {
-    dispatch(removeNoteStarted())
+    dispatch(removeNoteStarted(id))
     const newList = await removeNoteStorage(id)
     if (newList) {
       console.log('Response REMOVE NOTE: ', newList)
@@ -95,5 +109,6 @@ const removeNote = id => {
 export {
   fetchInitialList,
   addNote,
-  removeNote
+  removeNote,
+  updateListDone
 }

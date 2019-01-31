@@ -46,7 +46,7 @@ class Button extends PureComponent {
           disabled={loading}
         >
           {loading
-            ? <Loader size={14} color="#fff" />
+            ? <Loader size={14} color="#e74c3c" />
             : <FontAwesomeIcon icon={this.chooseIcon(type)} />
           }
           {this.showTotal()}
@@ -57,7 +57,8 @@ class Button extends PureComponent {
 }
 
 Button.defaultProps = {
-  totalNotes: 0
+  totalNotes: 0,
+  loading: false
 }
 
 Button.propTypes = {

@@ -1,14 +1,17 @@
 import {
   FETCH_STATUS,
   ADD_STATUS,
-  REMOVE_STATUS
+  REMOVE_STATUS,
+  UPDATE_STATUS
 } from '../actions/noteActionsType'
 
 /** initial state */
 const initialState = {
   list: [],
   listLoading: true,
-  btnLoading: false
+  btnLoading: false,
+  btnRemoveLoading: false,
+  updateList: false
 }
 
 const notes = (state = initialState, action) => {
@@ -36,10 +39,26 @@ const notes = (state = initialState, action) => {
         list: action.list,
         btnLoading: action.loading
       }
+    case REMOVE_STATUS.REMOVE_STARTED:
+      return {
+        ...state,
+        btnRemoveLoading: action.loading
+      }
     case REMOVE_STATUS.REMOVE_DONE:
       return {
         ...state,
-        list: action.list
+        list: action.list,
+        btnRemoveLoading: action.loading
+      }
+    case UPDATE_STATUS.UPDATE_STARTED:
+      return {
+        ...state,
+        updateList: action.update
+      }
+    case UPDATE_STATUS.UPDATE_DONE:
+      return {
+        ...state,
+        updateList: action.update
       }
     default:
       return state

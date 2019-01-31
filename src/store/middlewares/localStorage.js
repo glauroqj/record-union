@@ -35,14 +35,16 @@ const addNoteStorage = async text => {
 const removeNoteStorage = async (id) => {
   let storage = await fetchListStorage()
   return new Promise((resolve, reject) => {
-    if (storage) {
-      console.log('STORAGE: ',storage)
-      storage.splice(id, 1)
-      console.log('Remove Note: ', storage)
-    }
-    const serializedData = JSON.stringify(storage)
-    localStorage.setItem('quick-notes', serializedData)
-    resolve(storage)
+    setTimeout(() => {
+      if (storage) {
+        console.log('STORAGE: ',storage)
+        storage.splice(id, 1)
+        console.log('Remove Note: ', storage)
+      }
+      const serializedData = JSON.stringify(storage)
+      localStorage.setItem('quick-notes', serializedData)
+      resolve(storage)
+    }, 2000)
   })
 }
 
