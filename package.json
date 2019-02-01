@@ -7,8 +7,12 @@
   "license": "ISC",
   "scripts": {
     "dev": "next src",
+    "test": "yarn jest",
     "build": "next build src",
     "start": "next start src"
+  },
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
@@ -35,8 +39,13 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@zeit/next-sass": "^1.0.1",
+    "babel-jest": "^24.0.0",
     "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-module-resolver": "^3.1.2",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.8.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^24.0.0",
     "node-sass": "^4.11.0"
   }
 }
