@@ -10,7 +10,7 @@ const initialState = {
   list: [],
   listLoading: true,
   btnLoading: false,
-  btnRemoveLoading: false,
+  btnRemoveLoading: [],
   updateList: false
 }
 

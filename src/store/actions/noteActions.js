@@ -41,14 +41,14 @@ const addNoteError = () => ({
   loading: false
 })
 
-const removeNoteStarted = (id) => ({
+const removeNoteStarted = id => ({
   type: REMOVE_STATUS.REMOVE_STARTED,
   loading: id
 })
-const removeNoteDone = list => ({
+const removeNoteDone = (list, arrayLoading) => ({
   type: REMOVE_STATUS.REMOVE_DONE,
   list,
-  loading: false
+  loading: arrayLoading
 })
 const removeNoteError = () => ({
   type: REMOVE_STATUS.REMOVE_ERROR
@@ -98,7 +98,11 @@ const removeNote = id => {
     const newList = await removeNoteStorage(id)
     if (newList) {
       console.log('Response REMOVE NOTE: ', newList)
-      dispatch(removeNoteDone(newList))
+      const currentState = getState()
+      /* remove id loading already done */
+      let removeLoading = currentState.notes.btnRemoveLoading.filter(value => value !== newList.id[0])
+      removeLoading.forEach((value, index, arr) => (removeLoading[index] = (value - 1)))
+      dispatch(removeNoteDone(newList.storage, removeLoading))
     }
     if (!newList) {
       dispatch(removeNoteError())

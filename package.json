@@ -5,14 +5,16 @@
   "main": "index.js",
   "author": "Glauro Q Juliani",
   "license": "ISC",
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
   "scripts": {
     "dev": "next src",
     "test": "yarn jest",
     "build": "next build src",
     "start": "next start src"
-  },
-  "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",

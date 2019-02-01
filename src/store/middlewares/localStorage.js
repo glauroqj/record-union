@@ -34,10 +34,10 @@ const removeNoteStorage = async (id) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (storage) {
-        storage.splice(id, 1)
+        storage = storage.filter((item, index) => index !== id[0])
         const serializedData = JSON.stringify(storage)
         localStorage.setItem('quick-notes', serializedData)
-        resolve(storage)
+        resolve({ storage, id })
       }
       if (!storage) resolve([])
     }, 2000)
