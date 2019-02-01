@@ -12,7 +12,7 @@ const ListItem = props => (
           <div className="text-item">
             <span>{`${index}`}</span>{`${item.text}`}
             {(props.btnRemoveLoading === index) && (
-              <span className="text-item-remove">Removing...</span>
+              <div className="text-item-remove">Removing...</div>
             )}
           </div>
           <div className="btn-item">

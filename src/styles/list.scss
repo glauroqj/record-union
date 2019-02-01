@@ -47,9 +47,11 @@
       }
 
       .text-item-remove {
+        font-size: 10px;
+        color: #cecece;
         position: absolute;
-        left: 10px;
-        bottom: -10px;
+        right: 0px;
+        bottom: -9px;
       }
     }
 
@@ -88,8 +90,10 @@
         }
 
         .text-item-remove {
+          font-size: 10px;
+          color: #cecece;
           position: absolute;
-          left: 15px;
+          right: 0px;
           bottom: 0px;
         }
       }
