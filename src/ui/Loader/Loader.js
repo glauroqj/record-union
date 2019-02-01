@@ -13,6 +13,10 @@ const Loader = props => (
   </div>
 )
 
+Loader.defaultProps = {
+  text: ''
+}
+
 Loader.propTypes = {
   text: PropTypes.string,
   size: PropTypes.number.isRequired,
