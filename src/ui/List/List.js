@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { ListItem } from '../List'
@@ -12,7 +11,6 @@ class List extends Component {
 
   removeNoteList = (id) => (e) => {
     const { removeNote } = this.props
-    console.log('REMOVE NOTE: ', id, e)
     removeNote(id)
   }
 
@@ -21,6 +19,7 @@ class List extends Component {
       list, 
       btnRemoveLoading 
     } = this.props.state.notes
+
     const { popup } = this.props
     const gridClass = classNames({
       'col-xs-12': popup,
