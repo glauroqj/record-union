@@ -8,7 +8,8 @@ import {
 import {
   fetchListStorage,
   addNoteStorage,
-  removeNoteStorage
+  removeNoteStorage,
+  updateListRemove
 } from '../middlewares/localStorage'
 
 const fetchListStarted = () => ({
@@ -41,14 +42,13 @@ const addNoteError = () => ({
   loading: false
 })
 
-const removeNoteStarted = id => ({
+const removeNoteStarted = list => ({
   type: REMOVE_STATUS.REMOVE_STARTED,
-  loading: id
+  list
 })
 const removeNoteDone = (list, arrayLoading) => ({
   type: REMOVE_STATUS.REMOVE_DONE,
-  list,
-  loading: arrayLoading
+  list
 })
 const removeNoteError = () => ({
   type: REMOVE_STATUS.REMOVE_ERROR
@@ -94,18 +94,18 @@ const addNote = text => {
 
 const removeNote = id => {
   return async (dispatch, getState) => {
-    dispatch(removeNoteStarted(id))
-    const newList = await removeNoteStorage(id)
-    if (newList) {
-      console.log('Response REMOVE NOTE: ', newList)
-      const currentState = getState()
-      /* remove id loading already done */
-      let removeLoading = currentState.notes.btnRemoveLoading.filter(value => value !== newList.id[0])
-      removeLoading.forEach((value, index, arr) => (removeLoading[index] = (value - 1)))
-      dispatch(removeNoteDone(newList.storage, removeLoading))
-    }
-    if (!newList) {
-      dispatch(removeNoteError())
+    /* add note remove queue */
+    const listRemove = await updateListRemove(id)
+    if (listRemove) {
+      dispatch(removeNoteStarted(listRemove))
+      const storageList = await removeNoteStorage(id)
+      if (storageList) {
+        console.log('Response REMOVE NOTE: ', storageList)
+        dispatch(removeNoteDone(storageList))
+      }
+      if (!storageList) {
+        dispatch(removeNoteError())
+      }
     }
   }
 }

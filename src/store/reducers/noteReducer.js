@@ -10,7 +10,6 @@ const initialState = {
   list: [],
   listLoading: true,
   btnLoading: false,
-  btnRemoveLoading: [],
   updateList: false
 }
 
@@ -42,13 +41,12 @@ const notes = (state = initialState, action) => {
     case REMOVE_STATUS.REMOVE_STARTED:
       return {
         ...state,
-        btnRemoveLoading: action.loading
+        list: action.list
       }
     case REMOVE_STATUS.REMOVE_DONE:
       return {
         ...state,
-        list: action.list,
-        btnRemoveLoading: action.loading
+        list: action.list
       }
     case UPDATE_STATUS.UPDATE_STARTED:
       return {

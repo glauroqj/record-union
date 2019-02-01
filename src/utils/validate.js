@@ -8,7 +8,8 @@ const validate = (text) => {
 
   const payload = {
     text,
-    errorbag
+    errorbag,
+    remove: false
   }
   return payload
 }

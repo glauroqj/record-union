@@ -11,7 +11,7 @@ const ListItem = props => (
         <li id={index} className="list-item">
           <div className="text-item">
             <span>{`${index}`}</span>{`${item.text}`}
-            {(props.btnRemoveLoading.indexOf(index) > -1) && (
+            {item.remove && (
               <div className="text-item-remove">Removing...</div>
             )}
           </div>
@@ -19,7 +19,7 @@ const ListItem = props => (
             <Button 
               type="remove" 
               click={props.removeNoteList(index)}
-              loading={props.btnRemoveLoading.indexOf(index) > -1}
+              loading={item.remove}
             />
           </div>
         </li>
