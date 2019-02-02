@@ -7,22 +7,23 @@ import {
   addNoteStorage,
   removeNoteStorage
 } from './localStorage'
-
 describe('Local Storage methods', () => {
+  let noteID = ''
   it('should fetch empty list', async () => {
     const response = await fetchListStorage()
     expect(response).toEqual(null)
   })
   it('should add note', async () => {
     const response = await addNoteStorage('quick note')
-    expect(response[0]).toEqual({ text: 'quick note', errorbag: [] })
+    noteID = response[0].id
+    expect(response[0].text).toEqual('quick note')
   })
   it('should fetch notes list', async () => {
     const response = await fetchListStorage()
     expect(response.length).toEqual(1)
   })
   it('should remove note', async () => {
-    const response = await removeNoteStorage(0)
+    const response = await removeNoteStorage(noteID)
     expect(response).toEqual([])
   })
 })
