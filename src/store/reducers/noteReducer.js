@@ -17,7 +17,6 @@ const initialState = {
 const notes = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_STATUS.FETCH_DONE:
-    console.log('FETCH DONE: ', state, action)
       return {
         ...state,
         list: action.list,
@@ -41,7 +40,6 @@ const notes = (state = initialState, action) => {
         btnLoading: action.loading
       }
     case REMOVE_STATUS.REMOVE_STARTED:
-    console.log('REMOVE NOTE: ', state, action)
       return {
         ...state,
         remove: [...state.remove, action.id]
