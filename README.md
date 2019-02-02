@@ -2,13 +2,13 @@
 
 #### Steps
 - clone this repo
-- inside a folder { record-union } follow the steps bellow and have fun :)
+- inside the folder { record-union } follow the steps bellow and have fun :)
 - install yarn
 - yarn install
 - yarn dev { local server }
 - yarn test { unit test & coverage }
 
-- live demo link: [here](https://quick-notes-jvptcdvvbj.now.sh/)
+- live demo link: [here](https://quick-notes-ezcrhizplh.now.sh/)
 - (maybe is slow on first access)
 
 #### Requirements
