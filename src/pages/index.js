@@ -10,10 +10,6 @@ import { Loader } from '../ui/Loader'
 import { fetchInitialList } from '../store/actions/noteActions'
 
 class Home extends Component {
-  static getInitialProps = async ({ reduxStore, req }) => {
-    console.log('GET INITIAL PROPS HOME')
-  }
-
   componentDidMount() {
     const { fetchInitialList } = this.props
     fetchInitialList()
