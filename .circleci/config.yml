@@ -21,15 +21,6 @@ jobs:
                 key: yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
                 paths:
                     - node_modules
-    unit-test:
-        <<: *defaults
-        steps:
-            - run:
-                name: YARN Install
-                command: yarn install
-            - run:
-                name: Unit Test
-                command: yarn test
     deploy:
         <<: *defaults
         steps:
