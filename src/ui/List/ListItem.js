@@ -8,7 +8,7 @@ const ListItem = props => (
   <ul>
     {props.list && props.list.map((item, index) => (
       <React.Fragment key={index}>
-        <li id={index} className="list-item">
+        <li id={index} className="list-item animated fadeIn">
           <div className="text-item">
             <span>{`${index}`}</span>{`${item.text}`}
             {(props.remove.indexOf(item.id) > - 1) && (

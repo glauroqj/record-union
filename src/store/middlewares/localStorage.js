@@ -36,7 +36,7 @@ const removeNoteStorage = async id => {
       storage = storage.filter(item => (item.id !== id))
       const serializedData = JSON.stringify(storage)
       localStorage.setItem('quick-notes', serializedData)
-      setTimeout( async () => {
+      setTimeout(() => {
         resolve(storage)
       }, 2000)
     }
@@ -47,6 +47,5 @@ const removeNoteStorage = async id => {
 export {
   fetchListStorage,
   addNoteStorage,
-  removeNoteStorage,
-  updateListRemove
+  removeNoteStorage
 }

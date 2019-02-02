@@ -6,7 +6,7 @@ class Popup extends Component {
 
   render() {
     return (
-      <div className="popup">
+      <div className="popup animated fadeIn">
         <List popup />
         <InsertItem />
       </div>

@@ -8,8 +8,7 @@ import {
 import {
   fetchListStorage,
   addNoteStorage,
-  removeNoteStorage,
-  updateListRemove
+  removeNoteStorage
 } from '../middlewares/localStorage'
 
 const fetchListStarted = () => ({
@@ -70,7 +69,6 @@ const fetchInitialList = () => {
     dispatch(fetchListStarted())
     /** async */
     const list = await fetchListStorage()
-    console.log('Action:', list)
     if (list) dispatch(fetchListDone(list))
     if (!list) dispatch(fetchListDoneEmpty())
   }
@@ -82,7 +80,6 @@ const addNote = text => {
     /** async */
     const newList = await addNoteStorage(text)
     if (newList) {
-      console.log('Response ADD NOTE: ',newList)
       dispatch(addNoteDone(newList))
       dispatch(updateListStarted())
     }
@@ -97,11 +94,11 @@ const removeNote = id => {
   return async (dispatch, getState) => {
     /* add note remove queue */
     dispatch(removeNoteStarted(id))
-    const sendToRemove = await removeNoteStorage(id)
-    if (sendToRemove) {
-      dispatch(removeNoteDone(sendToRemove))
+    const newList = await removeNoteStorage(id)
+    if (newList) {
+      dispatch(removeNoteDone(newList))
     }
-    if (!sendToRemove) {
+    if (!newList) {
       dispatch(removeNoteError())
     }
   }
