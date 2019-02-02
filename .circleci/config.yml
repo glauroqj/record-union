@@ -21,13 +21,18 @@ jobs:
   unit-test:
     steps:
       - checkout
+      - run: yarn install
       - run: yarn test
+      - run:
+          name: Unit Test
 
   build:
     steps:
       - checkout
+      - run: yarn install
       - run: yarn build
-      - deploy:
+      - run:
+          name: Build
 
 workflows:
   version: 2
