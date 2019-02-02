@@ -2,9 +2,6 @@
   "name": "quick-notes",
   "version": 1,
   "alias": ["www.quick-notes.com, quick-notes.com"],
-  "builds": [
-    { "src": "*.html", "use": "@now/static" }
-  ],
   "routes": [
     { "src": "/", "headers": {"dest": "/index.html" }},
     { "src": "/", "status": 404}

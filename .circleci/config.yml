@@ -21,20 +21,17 @@ jobs:
                 key: yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
                 paths:
                     - node_modules
-    deploy:
+    unit-test:
         <<: *defaults
         steps:
             - run:
-                name: Install Now CLI
-                command: sudo yarn install --global --unsafe-perm now
-            - deploy:
-                name: Deploy
-                command: now -t ${ZEIT_TOKEN}
+                name: Unit Test
+                command: yarn test
 workflows:
     version: 2
-    deploy:
+    test:
         jobs:
             - checkout
-            - deploy:
+            - unit-test:
                 requires:
                     - checkout
