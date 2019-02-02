@@ -25,7 +25,7 @@ class QuickNotes extends Component {
     return (
       <div className="row end-xs bottom-xs">
         <div className={gridClass}>
-          <div className="quick-notes animated bounceIn">
+          <div className="quick-notes">
               {!isCollapsed && (
                 <Popup />
               )}

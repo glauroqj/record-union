@@ -24,7 +24,7 @@ class List extends Component {
       'col-xs-12': popup,
       'col-xs-12 col-sm-8 col-md-6 col-lg-4': !popup
     })
-    const listClass = classNames('list', {
+    const listClass = classNames('list animated fadeIn', {
       'list-popup': popup,
       'container-list': !popup
     })

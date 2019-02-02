@@ -31,9 +31,9 @@ class Button extends PureComponent {
     } = this.props
 
     const btnClassName = classNames('btn', {
-      remove: type === 'remove',
+      'remove animated slideInRight': type === 'remove',
       send: type === 'send',
-      balloon: type === 'balloon',
+      'balloon animated bounceIn': type === 'balloon',
       disabled: loading
     })
 

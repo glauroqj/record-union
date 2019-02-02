@@ -47,19 +47,14 @@ class InsertItem extends Component {
 
   updateList = () => {
     const { updateListDone } = this.props
-    const { list } = this.props.state.notes
+    const popupList = document.querySelectorAll('.list-popup ul')[0]
 
-    const lists = ['.list.list-popup li', '.list.container-list li']
     this.setState({
       text: '',
       placeholder: ''
     })
     document.getElementById('insert-input').focus()
-    lists.forEach((item) => {
-      setTimeout(() => {
-        document.querySelectorAll(item)[(list.length - 1)].scrollIntoView()
-      }, 100)
-    })
+    popupList.scrollIntoView({block: 'end', behavior: 'smooth'})
 
     /** send dispatch to updateList false */
     updateListDone()
