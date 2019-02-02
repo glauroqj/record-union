@@ -7,6 +7,7 @@ import {
   addNoteStorage,
   removeNoteStorage
 } from './localStorage'
+
 describe('Local Storage methods', () => {
   let noteID = ''
   it('should fetch empty list', async () => {

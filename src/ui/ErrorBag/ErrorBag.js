@@ -15,8 +15,12 @@ const ErrorBag = props => (
   </>
 )
 
+ErrorBag.defaultProps = {
+  errorbag: []
+}
+
 ErrorBag.propTypes = {
-  errorbag: PropTypes.arrayOf(PropTypes.string),
+  errorbag: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default ErrorBag

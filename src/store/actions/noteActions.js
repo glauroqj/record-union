@@ -108,5 +108,16 @@ export {
   fetchInitialList,
   addNote,
   removeNote,
-  updateListDone
+  updateListStarted,
+  updateListDone,
+  fetchListStarted,
+  fetchListDone,
+  fetchListDoneEmpty,
+  fetchListError,
+  addNoteStarted,
+  addNoteDone,
+  addNoteError,
+  removeNoteStarted,
+  removeNoteDone,
+  removeNoteError
 }
