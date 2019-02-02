@@ -26,13 +26,17 @@ jobs:
       - run:
           name: Unit Test
 
-  build:
+  deploy:
     steps:
       - checkout
       - run: yarn install
       - run: yarn build
       - run:
-          name: Build
+          name: Install Now CLI
+          command: sudo yarn install --global --unsafe-perm now
+      - run:
+          name: Deploy
+          command: now --token $ZEIT_TOKEN
 
 workflows:
   version: 2
@@ -40,7 +44,11 @@ workflows:
     jobs:
       - checkout:
       - unit-test:
-      - build:
+          requires:
+            - checkout
+      - deploy:
+          requires:
+            - unit-test
           filters:
             branches:
               only: master
