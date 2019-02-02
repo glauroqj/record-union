@@ -1,6 +1,6 @@
 # record-union
 
-## Steps
+#### Steps
 - clone this repo
 - inside a folder { record-union } follow the steps bellow and have fun :)
 - install yarn
@@ -8,10 +8,10 @@
 - yarn dev { local server }
 - yarn test { unit test & coverage }
 
-- live demo link: [a link](quick-notes-fafxunmwiq.now.sh)
+- live demo link: [here](https://quick-notes-jvptcdvvbj.now.sh/)
 - (maybe is slow on first access)
 
-## Requirements
+#### Requirements
 - It should look like an icon in the lower right corner of the screen when minified. [done]
 
 - It should expand into a modal dialog with an ability to append quick notes. [done]
@@ -28,7 +28,7 @@
 
 - The task should be covered with tests. [done]
 
-## Optional requirements
+#### Optional requirements
 - Everything should be animated to the max possible extent. Be smart about how you set up you animations. [done]
 - When a note is being appended it should be checked against a list of validation rules and they should be visible
 under every instance of that particular note (inside the dialog as well as outside the dialog). List of rules to validate against:
