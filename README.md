@@ -8,7 +8,7 @@
 - yarn dev { local server }
 - yarn test { unit test & coverage }
 
-live demo link: quick-notes-kclokauzqg.now.sh
+live demo link: <a targe="blank" link="quick-notes-kclokauzqg.now.sh">HERE</a>
 (maybe is slow on first access)
 
 ## Requirements
