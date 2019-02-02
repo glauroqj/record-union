@@ -1,12 +1,6 @@
 {
-  "version": 2,
+  "version": 1,
   "name": "quick-notes",
-  "builds": [
-    { "src": "package.json", "use": "@now/static-build" }
-  ],
-  "scripts": {
-    "now-build": "react-scripts build src && mv build dist"
-  },
   "alias": ["www.quick-notes.com, quick-notes.com"],
   "routes": [
     { "src": "/", "headers": {"dest": "/index.html" }},
