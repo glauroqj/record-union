@@ -17,9 +17,7 @@ class Button extends PureComponent {
 
   showTotal = () => {
     const { type, totalNotes } = this.props
-    const totalClass =  classNames('total-notes',{
-      dots: totalNotes >= 1000
-    })
+    const totalClass =  classNames('total-notes')
     if (type === 'balloon') return <div className={totalClass}>{totalNotes}</div>
   }
 
