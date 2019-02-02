@@ -29,7 +29,7 @@ jobs:
                 command: sudo yarn install --global --unsafe-perm now
             - deploy:
                 name: Deploy
-                command: now -t $ZEIT_TOKEN alias quick-notes
+                command: now -t ${ZEIT_TOKEN}
 workflows:
     version: 2
     deploy:
