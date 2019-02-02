@@ -1,5 +1,4 @@
 {
   "name": "quick-note-now-production",
-  "forwardNpm": true,
   "alias": ["quick-notes"]
 }

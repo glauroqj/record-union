@@ -1,5 +1,13 @@
 # record-union
 
+## Steps
+- clone this repo
+- inside a folder { record-union } follow the steps bellow and have fun :)
+- install yarn
+- yarn install
+- yarn dev { local server }
+- yarn test { unit test & coverage }
+
 ## Requirements
 - It should look like an icon in the lower right corner of the screen when minified. [done]
 
@@ -15,7 +23,7 @@
 
 - The delay between the click on the “Add note” button and the update on the page itself should be 2 seconds.
 
-- The task should be covered with tests.
+- The task should be covered with tests. [done]
 
 ## Optional requirements
 - Everything should be animated to the max possible extent. Be smart about how you set up you animations. [done]

@@ -1,23 +1,40 @@
-machine:
-  environment:
-    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
-  node:
-    version: node:10.5.0
+defaults: &defaults
+    docker:
+        - image: circleci/node:10.5.0
+    working_directory: ~/record-union
 
-dependencies:
-  override:
-    - yarn
-  cache_directories:
-    - ~/.cache/yarn
-  pre:
-    - yarn global add now
-
-test:
-  override:
-    - yarn test
-
-deployment:
-  deploy:
-    branch: master
-    commands:
-      - now -t ${ZEIT_TOKEN}
+version: 2
+jobs:
+    checkout:
+        <<: *defaults
+        steps:
+            - checkout
+            - restore_cache:
+                keys:
+                    - yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+                    - yarn-cache-{{ .Branch }}
+                    - yarn-cache-
+            - run:
+                name: YARN Install
+                command: yarn install
+            - save_cache:
+                key: yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+                paths:
+                    - node_modules
+    deploy:
+        <<: *defaults
+        steps:
+            - run:
+                name: Install Now CLI
+                command: sudo yarn install --global --unsafe-perm now
+            - deploy:
+                name: Deploy
+                command: now -t $ZEIT_TOKEN alias quick-notes
+workflows:
+    version: 2
+    deploy:
+        jobs:
+            - checkout
+            - deploy:
+                requires:
+                    - checkout
