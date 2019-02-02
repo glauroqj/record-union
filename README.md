@@ -8,8 +8,8 @@
 - yarn dev { local server }
 - yarn test { unit test & coverage }
 
-live demo link: <a targe="blank" link="quick-notes-kclokauzqg.now.sh">HERE</a>
-(maybe is slow on first access)
+- live demo link: [a link](quick-notes-fafxunmwiq.now.sh)
+- (maybe is slow on first access)
 
 ## Requirements
 - It should look like an icon in the lower right corner of the screen when minified. [done]
