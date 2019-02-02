@@ -33,6 +33,8 @@ workflows:
   version: 2
   build-deploy:
     jobs:
+      - checkout:
+      - unit-test:
       - build:
           filters:
             branches:
