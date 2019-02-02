@@ -1,54 +1,61 @@
-aliases:
-  - &restore-cache
-    keys:
-      - dependencies-{{ .Branch }}-{{ checksum "yarn-lock.json" }}-v1.0
-
-  - &save-cache
-    paths:
-      - node_modules
-    key: dependencies-{{ .Branch }}-{{ checksum "yarn-lock.json" }}-v1.0
+defaults: &defaults
+    docker:
+        - image: circleci/node:10.5.0
+    working_directory: ~/record-union
 
 version: 2
 jobs:
-  checkout:
-    docker: 
-      - image: node:10.5.0
-    working_directory: ~/record-union
-    steps:
-      - checkout
-      - run: yarn install
-
-  unit-test:
-    steps:
-      - checkout
-      - run: yarn install
-      - run: yarn test
-      - run:
-          name: Unit Test
-
-  deploy:
-    steps:
-      - checkout
-      - run: yarn install
-      - run: yarn build
-      - run:
-          name: Install Now CLI
-          command: sudo yarn install --global --unsafe-perm now
-      - run:
-          name: Deploy
-          command: now --token $ZEIT_TOKEN
-
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - checkout
-      - unit-test:
-          requires:
+    checkout:
+        <<: *defaults
+        steps:
             - checkout
-      - deploy:
-          requires:
-            - unit-test
-          filters:
-            branches:
-              only: master
+            - attach_workspace:
+                at: ~/tmp/circlci-now
+            - restore_cache:
+                keys:
+                    - yarn-cache-{{ .Branch }}-{{ checksum "yarn.json" }}
+                    - yarn-cache-{{ .Branch }}
+                    - yarn-cache-
+            - run:
+                name: YARN Install
+                command: yarn install
+            - save_cache:
+                key: yarn-cache-{{ .Branch }}-{{ checksum "yarn.json" }}
+                paths:
+                    - node_modules
+            - persist_to_workspace:
+                root: .
+                paths: .
+    unit-test:
+        <<: *defaults
+        steps:
+            - attach_workspace:
+                at: ~/tmp/circlci-now
+            - run:
+                name: YARN Install
+                command: yarn install
+            - run:
+                name: Unit Test
+                command: yarn test
+    deploy:
+        <<: *defaults
+        steps:
+            - attach_workspace:
+                at: ~/tmp/circlci-now
+            - run:
+                name: Install Now CLI
+                command: sudo yarn install --global --unsafe-perm now
+            - deploy:
+                name: Deploy
+                command: now --token $ZEIT_TOKEN
+workflows:
+    version: 2
+    test-deploy-purge:
+        jobs:
+            - checkout
+            - unit-test:
+                requires:
+                    - checkout
+            - deploy:
+                requires:
+                    - unit-test
