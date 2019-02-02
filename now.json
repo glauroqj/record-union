@@ -1,6 +1,5 @@
 {
-  "name": "circleci-with-zeith-now-production",
-  "type": "yarn",
+  "name": "quick-note-now-production",
   "forwardNpm": true,
-  "alias": ["quick-notes.com"]
+  "alias": ["quick-notes"]
 }
