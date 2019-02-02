@@ -19,8 +19,9 @@ jobs:
       - run: yarn install
 
   unit-test:
-    - checkout
-    - run: yarn test
+    steps:
+      - checkout
+      - run: yarn test
 
   build:
     steps:
