@@ -24,6 +24,9 @@ jobs:
     unit-test:
         <<: *defaults
         steps:
+            - checkout
+            - attach_workspace:
+                at: .
             - run:
                 name: Unit Test
                 command: yarn install
@@ -32,6 +35,9 @@ jobs:
     deploy:
         <<: *defaults
         steps:
+            - checkout
+            - attach_workspace:
+                at: .
             - run:
                 name: Install Now CLI
                 command: sudo yarn install --global --unsafe-perm now
