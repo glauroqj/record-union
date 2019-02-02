@@ -5,11 +5,11 @@ const validate = (text) => {
   if (emojis.test(text)) errorbag.push('Error: Contains emojis')
   if (text.length >= 100) errorbag.push('Error: 100 max characters')
   if (text === '') errorbag.push('Error: Empty note')
-
+  const id = btoa(new Date)
   const payload = {
+    id,
     text,
-    errorbag,
-    remove: false
+    errorbag
   }
   return payload
 }

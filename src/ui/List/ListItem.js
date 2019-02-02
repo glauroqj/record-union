@@ -5,22 +5,21 @@ import { Button } from '../Button'
 import { ErrorBag } from '../ErrorBag'
 
 const ListItem = props => (
-  console.log(props.list),
   <ul>
     {props.list && props.list.map((item, index) => (
       <React.Fragment key={index}>
         <li id={index} className="list-item">
           <div className="text-item">
             <span>{`${index}`}</span>{`${item.text}`}
-            {item.remove && (
+            {(props.remove.indexOf(item.id) > - 1) && (
               <div className="text-item-remove">Removing...</div>
             )}
           </div>
           <div className="btn-item">
             <Button 
               type="remove" 
-              click={props.removeNoteList(index)}
-              loading={item.remove}
+              click={props.removeNoteList(item.id)}
+              loading={(props.remove.indexOf(item.id) > - 1)}
             />
           </div>
         </li>

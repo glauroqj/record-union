@@ -11,19 +11,14 @@ class List extends Component {
 
   removeNoteList = (id) => (e) => {
     const { removeNote } = this.props
-    // let arrayID = []
-    // arrayID.push(id)
-    // arrayID = arrayID.concat(btnRemoveLoading)
-    // console.log(arrayID)
     removeNote(id)
   }
 
   render() {
     const { 
-      list, 
-      btnRemoveLoading 
+      list,
+      remove
     } = this.props.state.notes
-
     const { popup } = this.props
     const gridClass = classNames({
       'col-xs-12': popup,
@@ -36,8 +31,8 @@ class List extends Component {
 
     const listItemProps = {
       list,
-      removeNoteList: this.removeNoteList,
-      btnRemoveLoading
+      remove,
+      removeNoteList: this.removeNoteList
     }
 
     return (

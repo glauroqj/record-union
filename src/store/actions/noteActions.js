@@ -30,7 +30,8 @@ const fetchListDoneEmpty = () => ({
 
 const addNoteStarted = () => ({
   type: ADD_STATUS.ADD_STARTED,
-  loading: true
+  loading: true,
+  remove: []
 })
 const addNoteDone = list => ({
   type: ADD_STATUS.ADD_DONE,
@@ -42,9 +43,9 @@ const addNoteError = () => ({
   loading: false
 })
 
-const removeNoteStarted = list => ({
+const removeNoteStarted = (id) => ({
   type: REMOVE_STATUS.REMOVE_STARTED,
-  list
+  id
 })
 const removeNoteDone = list => ({
   type: REMOVE_STATUS.REMOVE_DONE,
@@ -95,22 +96,14 @@ const addNote = text => {
 const removeNote = id => {
   return async (dispatch, getState) => {
     /* add note remove queue */
-    const currentState = getState()
-    const listRemove = currentState.notes.list.map((item, index) => {
-      if (index === id) {
-        return {...item, remove: true}
-      }
-      return item
-    })
-    dispatch(removeNoteStarted(listRemove))
-    const sendToRemove = await removeNoteStorage(listRemove)
-    console.log(sendToRemove)
+    dispatch(removeNoteStarted(id))
+    const sendToRemove = await removeNoteStorage(id)
     if (sendToRemove) {
       dispatch(removeNoteDone(sendToRemove))
     }
-    // if (!sendToRemove) {
-    //   dispatch(removeNoteError())
-    // }
+    if (!sendToRemove) {
+      dispatch(removeNoteError())
+    }
   }
 }
 

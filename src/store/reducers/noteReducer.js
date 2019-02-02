@@ -8,6 +8,7 @@ import {
 /** initial state */
 const initialState = {
   list: [],
+  remove: [],
   listLoading: true,
   btnLoading: false,
   updateList: false
@@ -16,7 +17,7 @@ const initialState = {
 const notes = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_STATUS.FETCH_DONE:
-    console.log('FETCH DONE: ', action)
+    console.log('FETCH DONE: ', state, action)
       return {
         ...state,
         list: action.list,
@@ -30,7 +31,8 @@ const notes = (state = initialState, action) => {
     case ADD_STATUS.ADD_STARTED:
       return {
         ...state,
-        btnLoading: action.loading
+        btnLoading: action.loading,
+        remove: action.remove
     }
     case ADD_STATUS.ADD_DONE:
       return {
@@ -39,9 +41,10 @@ const notes = (state = initialState, action) => {
         btnLoading: action.loading
       }
     case REMOVE_STATUS.REMOVE_STARTED:
+    console.log('REMOVE NOTE: ', state, action)
       return {
         ...state,
-        list: action.list
+        remove: [...state.remove, action.id]
       }
     case REMOVE_STATUS.REMOVE_DONE:
       return {
