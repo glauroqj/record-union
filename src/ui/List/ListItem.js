@@ -5,6 +5,7 @@ import { Button } from '../Button'
 import { ErrorBag } from '../ErrorBag'
 
 const ListItem = props => (
+  console.log(props.list),
   <ul>
     {props.list && props.list.map((item, index) => (
       <React.Fragment key={index}>

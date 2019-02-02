@@ -11,7 +11,6 @@ class List extends Component {
 
   removeNoteList = (id) => (e) => {
     const { removeNote } = this.props
-    console.log('Remove: ', id)
     // let arrayID = []
     // arrayID.push(id)
     // arrayID = arrayID.concat(btnRemoveLoading)

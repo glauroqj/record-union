@@ -46,7 +46,7 @@ const removeNoteStarted = list => ({
   type: REMOVE_STATUS.REMOVE_STARTED,
   list
 })
-const removeNoteDone = (list, arrayLoading) => ({
+const removeNoteDone = list => ({
   type: REMOVE_STATUS.REMOVE_DONE,
   list
 })
@@ -95,18 +95,22 @@ const addNote = text => {
 const removeNote = id => {
   return async (dispatch, getState) => {
     /* add note remove queue */
-    const listRemove = await updateListRemove(id)
-    if (listRemove) {
-      dispatch(removeNoteStarted(listRemove))
-      const storageList = await removeNoteStorage(id)
-      if (storageList) {
-        console.log('Response REMOVE NOTE: ', storageList)
-        dispatch(removeNoteDone(storageList))
+    const currentState = getState()
+    const listRemove = currentState.notes.list.map((item, index) => {
+      if (index === id) {
+        return {...item, remove: true}
       }
-      if (!storageList) {
-        dispatch(removeNoteError())
-      }
+      return item
+    })
+    dispatch(removeNoteStarted(listRemove))
+    const sendToRemove = await removeNoteStorage(listRemove)
+    console.log(sendToRemove)
+    if (sendToRemove) {
+      dispatch(removeNoteDone(sendToRemove))
     }
+    // if (!sendToRemove) {
+    //   dispatch(removeNoteError())
+    // }
   }
 }
 

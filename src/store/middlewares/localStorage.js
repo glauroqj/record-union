@@ -29,38 +29,41 @@ const addNoteStorage = async text => {
   })
 }
 
-const removeNoteStorage = async (id) => {
-  let storage = await fetchListStorage()
+const removeNoteStorage = async list => {
+  // let storage = await fetchListStorage()
   return new Promise((resolve, reject) => {
-    if (storage) {
-      setTimeout(() => {
-        storage = storage.filter((item, index) => (item.remove !== true))
-        const serializedData = JSON.stringify(storage)
-        localStorage.setItem('quick-notes', serializedData)
-        resolve(storage)
-      }, 2000)
-    }
-    if (!storage) resolve([])
+    setTimeout( async () => {
+      list = list.filter(item => (item.remove !== true))
+      const serializedData = JSON.stringify(list)
+      localStorage.setItem('quick-notes', serializedData)
+      const updatedList = await fetchListStorage()
+      resolve(updatedList)
+    }, 6000)
+    // if (storage) {
+    // }
+    // if (!storage) resolve([])
   })
 }
 
-const updateListRemove = async id => {
-  let storage = await fetchListStorage()
-  return new Promise((resolve) => {
-    if (storage) {
-      storage = storage.map((item, index) => {
-        if (index === id) {
-          return {...item, remove: true}
-        }
-        return item
-      })
-      const serializedData = JSON.stringify(storage)
-      localStorage.setItem('quick-notes', serializedData)
-      resolve(storage)
-    }
-    if (!storage) resolve([])
-  })
-}
+// const updateListRemove = async list => {
+//   // let storage = await fetchListStorage()
+//   return new Promise( async (resolve) => {
+//     if (list) {
+//       // storage = storage.map((item, index) => {
+//       //   if (index === id) {
+//       //     return {...item, remove: true}
+//       //   }
+//       //   return item
+//       // })
+//       const removeNote = await removeNoteStorage(list)
+//       const serializedData = JSON.stringify(removeNote)
+//       localStorage.setItem('quick-notes', serializedData)
+//       console.log(removeNote)
+//       // resolve(storage)
+//     }
+//     if (!list) resolve([])
+//   })
+// }
 
 export {
   fetchListStorage,
