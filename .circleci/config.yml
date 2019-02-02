@@ -34,12 +34,9 @@ jobs:
                 command: now --token $ZEIT_TOKEN
 workflows:
     version: 2
-    test-deploy-purge:
+    deploy:
         jobs:
             - checkout
-            - unit-test:
-                requires:
-                    - checkout
             - deploy:
                 requires:
-                    - unit-test
+                    - checkout
