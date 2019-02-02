@@ -8,6 +8,9 @@
 - yarn dev { local server }
 - yarn test { unit test & coverage }
 
+live demo link: quick-notes-kclokauzqg.now.sh
+(maybe is slow on first access)
+
 ## Requirements
 - It should look like an icon in the lower right corner of the screen when minified. [done]
 
