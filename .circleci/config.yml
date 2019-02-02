@@ -1,7 +1,7 @@
 defaults: &defaults
     docker:
         - image: circleci/node:10.5.0
-    working_directory: ~/
+    working_directory: ~/record-union
 
 version: 2
 jobs:
