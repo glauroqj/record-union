@@ -29,9 +29,11 @@ jobs:
                 at: .
             - run:
                 name: Unit Test
-                command: yarn install
+                command: yarn add coveralls && yarn install
             - run:
                 command: yarn test
+            -run:
+                command: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
     deploy:
         <<: *defaults
         steps:

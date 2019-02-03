@@ -16,7 +16,8 @@
     "dev": "next src",
     "test": "yarn jest",
     "build": "next build src",
-    "start": "next start src"
+    "start": "next start src",
+    "coveralls": "./node_modules/.bin/jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
