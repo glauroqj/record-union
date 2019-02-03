@@ -42,7 +42,7 @@ jobs:
                 at: .
             - run:
                 name: Install Now CLI
-                command: yarn install --g now
+                command: npm install -g now
             - deploy:
                 name: Deploy
                 command: now -t ${ZEIT_TOKEN}
