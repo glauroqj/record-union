@@ -35,10 +35,15 @@
   &.balloon {
     padding: 12px 14px;
     border-radius: 50%;
-    background-color: $main-color;
+    background-color: $main-color-dark;
     color: $secondary-color;
     font-size: 1.6em;
     position: relative;
+    transition: background-color 0.5s, position 0.5s;
+
+    &:hover {
+      background-color: $main-color;
+    }
 
     .total-notes {
       font-size: 10px;
