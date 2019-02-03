@@ -32,7 +32,7 @@ jobs:
                 command: yarn add coveralls && yarn install
             - run:
                 command: yarn test
-            -run:
+            - run:
                 command: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
     deploy:
         <<: *defaults
