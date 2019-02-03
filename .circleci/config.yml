@@ -51,7 +51,9 @@ workflows:
     deploy:
         jobs:
             - checkout
-            - unit-test
+            - unit-test:
+                requires:
+                    - checkout
             - deploy:
                 requires:
                     - unit-test
