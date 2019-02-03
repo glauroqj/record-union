@@ -2,6 +2,8 @@
 
 #### [![Coverage Status](https://coveralls.io/repos/github/glauroqj/record-union/badge.svg?branch=master)](https://coveralls.io/github/glauroqj/record-union?branch=master)
 
+#### [![CircleCI](https://circleci.com/gh/glauroqj/record-union.svg?style=svg)](https://circleci.com/gh/glauroqj/record-union)
+
 #### Steps
 - clone this repo
 - inside the folder { record-union } follow the steps bellow and have fun :)
@@ -10,7 +12,7 @@
 - yarn dev { local server }
 - yarn test { unit test & coverage }
 
-- live demo link: [here](https://quick-notes-ezcrhizplh.now.sh/)
+- live demo link: [here](https://quick-notes-qvtitkmikw.now.sh/)
 - (maybe is slow on first access)
 
 #### Requirements
