@@ -45,7 +45,7 @@ jobs:
                 command: sudo npm install -g now && sudo yarn global add now
             - run:
                 name: Building
-                command: yarn build
+                command: yarn install && yarn build
             - deploy:
                 name: Deploy
                 command: now -t ${ZEIT_TOKEN}
