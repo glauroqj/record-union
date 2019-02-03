@@ -1,5 +1,7 @@
 # record-union
 
+#### [![Coverage Status](https://coveralls.io/repos/github/glauroqj/record-union/badge.svg?branch=master)](https://coveralls.io/github/glauroqj/record-union?branch=master)
+
 #### Steps
 - clone this repo
 - inside the folder { record-union } follow the steps bellow and have fun :)
